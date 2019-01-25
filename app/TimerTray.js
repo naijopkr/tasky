@@ -1,6 +1,6 @@
-const { Tray } = require('electron')
+const { Tray, Menu, app } = require('electron')
 
-const setWindowPosition = (mainWindow, bounds) => {
+const setWindowPosition = (mainWindow, bounds = { x: 0, y: 0 }) => {
   const { x, y } = bounds
   const { height, width } = mainWindow.getBounds()
 
@@ -26,7 +26,19 @@ const toggleTasky = (mainWindow, bounds) => {
 const TimerTray = (iconPath, mainWindow) => {
   const tray = new Tray(iconPath)
 
-  tray.on('click', (event, bounds) => toggleTasky(mainWindow, bounds))
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Tasky',
+      click: () => toggleTasky(mainWindow)
+    },
+    {
+      label: 'Quit',
+      click: () => app.quit()
+    }
+  ])
+
+  tray.setToolTip('Tasky')
+  tray.setContextMenu(contextMenu)
 
   return tray
 }
