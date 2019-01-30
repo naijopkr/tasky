@@ -8,6 +8,8 @@ import TasksShow from "./TasksShow"
 import Timer from "../utils/Timer"
 import Settings from "./Settings"
 
+localStorage.clear()
+
 const APP_DATA = JSON.parse(localStorage.getItem("__INITIAL_STATE__"))
 
 const INITIAL_STATE = {
