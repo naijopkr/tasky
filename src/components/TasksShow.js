@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import moment from "moment";
-import "moment-duration-format";
+import React, { Component } from "react"
+import moment from "moment"
+import "moment-duration-format"
 
 class TasksShow extends Component {
   state = {
     task: ""
-  };
+  }
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
     if (this.state.task) {
       const task = {
         id: ~~(Math.random() * 99999),
         totalTime: 0,
         task: this.state.task
-      };
-      this.props.createTask(task);
-      this.setState({ task: "" });
+      }
+      this.props.createTask(task)
+      this.setState({ task: "" })
     }
-  };
+  }
 
   renderActiveTask() {
-    const { activeTask } = this.props;
+    const { activeTask } = this.props
     if (activeTask) {
       return (
         <li className="collection-item avatar" key={activeTask.id}>
@@ -32,9 +32,9 @@ class TasksShow extends Component {
             .duration(activeTask.totalTime, "seconds")
             .format("hh:mm:ss", { trim: false })}`}</p>
         </li>
-      );
+      )
     }
-    return null;
+    return null
   }
 
   renderTasks() {
@@ -63,8 +63,8 @@ class TasksShow extends Component {
             delete
           </i>
         </li>
-      );
-    });
+      )
+    })
   }
 
   render() {
@@ -85,7 +85,7 @@ class TasksShow extends Component {
           {this.renderTasks()}
         </ul>
       </div>
-    );
+    )
   }
 }
 
@@ -97,6 +97,6 @@ const styles = {
   pointer: {
     cursor: "pointer"
   }
-};
+}
 
-export default TasksShow;
+export default TasksShow

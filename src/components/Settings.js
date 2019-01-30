@@ -1,36 +1,36 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 class Settings extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       time: props.timer.time,
       unit: props.timer.unit
-    };
+    }
   }
 
   onSubmit = e => {
-    e.preventDefault();
-    this.props.handleSubmit(this.state);
-  };
+    e.preventDefault()
+    this.props.handleSubmit(this.state)
+  }
 
   buttonStyle = () => {
-    const { time, unit } = this.state;
-    const propsTime = this.props.timer.time;
-    const propsUnit = this.props.timer.unit;
+    const { time, unit } = this.state
+    const propsTime = this.props.timer.time
+    const propsUnit = this.props.timer.unit
 
     if (time == propsTime && unit == propsUnit) {
       // double equals to avoid type check
-      return "btn disabled";
+      return "btn disabled"
     }
 
     if (this.props.timer.active) {
-      return "btn disabled";
+      return "btn disabled"
     }
 
-    return "btn";
-  };
+    return "btn"
+  }
 
   render() {
     return (
@@ -70,7 +70,7 @@ class Settings extends Component {
           Reset Data
         </button>
       </div>
-    );
+    )
   }
 }
 
@@ -82,6 +82,6 @@ const styles = {
   pointer: {
     cursor: "pointer"
   }
-};
+}
 
-export default Settings;
+export default Settings

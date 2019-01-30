@@ -1,5 +1,5 @@
 const path = require('path')
-const { app } = require('electron')
+const { app, ipcMain } = require('electron')
 const Tray = require('./app/TimerTray')
 const MainWindow = require('./app/MainWindow')
 
@@ -7,9 +7,7 @@ let mainWindow
 let tray
 
 app.on('ready', () => {
-  if (app.dock && app.dock.hide) {
-    app.dock.hide()
-  }
+  app.dock && app.dock.hide()
 
   const mainWindowConfig = {
     width: 300,
